@@ -6,8 +6,12 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(`https://randomuser.me/api/?results=10`);
-      setData(res.data.results);
+      try {
+        const res = await axios.get(`https://randomuser.me/api/?results=10`);
+        setData(res.data.results);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getData();
   }, []);
